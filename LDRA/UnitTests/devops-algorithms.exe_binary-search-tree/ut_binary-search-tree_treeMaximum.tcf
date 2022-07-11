@@ -1,0 +1,38 @@
+# Begin Testbed Set
+  SET_TYPE = SYSTEM
+  SET_NAME = devops-algorithms.exe_binary-search-tree
+  GENERATED_BY = Create_Unit_Test_TCFs.bat
+  # Begin Source Files
+    RelativeFile = .\binary-search-tree.c
+  # End Source Files
+# End Testbed Set
+
+# Begin Text
+This sequence tests the function treeMaximum
+# End Text
+
+# Begin Attributes
+  Sequence Name = ut_binary-search-tree_treeMaximum
+  Language Code = 2
+# End Attributes
+
+# Begin Properties
+  IBox = Light Grey
+# End Properties
+
+# Begin Isolated Procedure
+  File = .\binary-search-tree.c
+  Procedure = treeMaximum
+# End Isolated Procedure
+
+# Begin Selected Files from Set
+  .\binary-search-tree.c
+# End Selected Files from Set
+
+# Begin Excluded Files
+# End Excluded Files
+
+# Begin White Files
+  .\binary-search-tree.c
+# End White Files
+

@@ -1,0 +1,5 @@
+start /wait C:\LDRA_Toolsuite_C_CPP_10.0.2\Contestbed  C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -112a345670212q
+cd C:\LDRA_Workarea_C_CPP_10.0.2>
+C:\Demo\demo-caesar\demo-caesar.exe
+cd C:\LDRA_Workarea_C_CPP_10.0.2\demo-caesar_tbwrkfls>
+start /wait C:\LDRA_Toolsuite_C_CPP_10.0.2\Contestbed  C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -32panq

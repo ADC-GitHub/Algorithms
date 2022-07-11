@@ -1,0 +1,38 @@
+# Begin Testbed Set
+  SET_TYPE = SYSTEM
+  SET_NAME = devops-algorithms.exe_treap-sort
+  GENERATED_BY = Create_Unit_Test_TCFs.bat
+  # Begin Source Files
+    RelativeFile = .\treap-sort.c
+  # End Source Files
+# End Testbed Set
+
+# Begin Text
+This sequence tests the function printTreeKeyOrder
+# End Text
+
+# Begin Attributes
+  Sequence Name = ut_treap-sort_printTreeKeyOrder
+  Language Code = 2
+# End Attributes
+
+# Begin Properties
+  IBox = Light Grey
+# End Properties
+
+# Begin Isolated Procedure
+  File = .\treap-sort.c
+  Procedure = printTreeKeyOrder
+# End Isolated Procedure
+
+# Begin Selected Files from Set
+  .\treap-sort.c
+# End Selected Files from Set
+
+# Begin Excluded Files
+# End Excluded Files
+
+# Begin White Files
+  .\treap-sort.c
+# End White Files
+

@@ -327,14 +327,45 @@ stages:
         paramname: "Command"
         paramvalue: "start /wait C:\\LDRA_Toolsuite_C_CPP_10.0.2\\tbreports C:\\LDRA_Workarea_C_CPP_10.0.2\\\
           devops-algorithms.exe_tbwrkfls\\devops-algorithms.exe.ldra -preset=\"Security\
-          \ Report\" -report_format=html\ncopy /S/Q C:\\LDRA_Workarea_C_CPP_10.0.2\\\
-          devops-algorithms.exe_tbwrkfls\\devops-algorithms.exe_publish\\security\\\
-          *.* C:\\Demo\\demo-algorithms\\Publish"
+          \ Report\" -report_format=html  –tbpublish –tbpublish_dir=C:\\Demo\\demo-algorithms\\\
+          Publish"
         paramorder: 1
         issecurityparam: "N"
       - direction: "IN"
         paramdatatype: "SingleLineText"
         paramname: "Error Text"
         paramvalue: "error during LDRA test action"
+        paramorder: 2
+        issecurityparam: "N"
+  - tasktitle: "MoveReports"
+    issystemtask: false
+    suborder: 0
+    tasktype: "Plugin"
+    agent: "LOGICPCNBK01"
+    postcondition: ""
+    precondition: ""
+    toolInstance:
+      method: "ExecuteCMDCommand"
+      pluginName: "CustomCommandPluginV.1.0"
+      ignorefailed: "N"
+      skiptask: "N"
+      toolDetails:
+      - direction: "IN"
+        paramdatatype: "SingleLineText"
+        paramname: "inputhostname"
+        paramvalue: ""
+        paramorder: 100
+        issecurityparam: "N"
+      - direction: "IN"
+        paramdatatype: "MultiLineText"
+        paramname: "Command"
+        paramvalue: "xcopy C:\\LDRA_Workarea_C_CPP_10.0.2\\devops-algorithms.exe_tbwrkfls\\\
+          devops-algorithms.exe_publish\\ C:\\Demo\\demo-algorithms\\Publish\\  /S/Y"
+        paramorder: 1
+        issecurityparam: "N"
+      - direction: "IN"
+        paramdatatype: "SingleLineText"
+        paramname: "Error Text"
+        paramvalue: "could not find Report"
         paramorder: 2
         issecurityparam: "N"

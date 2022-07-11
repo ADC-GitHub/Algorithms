@@ -169,34 +169,7 @@ REM start /wait contestbed sourcefilename.c -112a345670212032panq
 4) cd C:\LDRA_Workarea_C_CPP_10.0.2\demo-caesar_tbwrkfls>
 5) start /wait C:\LDRA_Toolsuite_C_CPP_10.0.2\Contestbed  C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -32panq
 
-start /wait C:\LDRA_Toolsuite_C_CPP_10.0.2\Contestbed  C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -112a345670212q
+start /wait C:\LDRA_Toolsuite_C_CPP_10.0.2\Contestbed  C:\Demo\demo-caesar\LDRA\Caesar_V10.tc -112a345670212q
 C:\Demo\demo-caesar\demo-caesar.exe
 cd C:\LDRA_Workarea_C_CPP_10.0.2\demo-caesar_tbwrkfls
 start /wait C:\LDRA_Toolsuite_C_CPP_10.0.2\Contestbed  C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -32panq
-
-
-REM Runs phases required for Dynamic Dataflow Coverage.
-REM Replaces the command -112a34021203125q e.g. contestbed testrian.c -run_required_dyndflow
-REM If results already exist for a phase will not repeat analysis for that phase.
-REM -run_required_dyndflow
-start /wait  C:\LDRA_Toolsuite_C_CPP_10.0.2\Contestbed  C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -run_required_dyndflow
-
-REM Analysis Phases
-REM -review Runs Static analysis phases, Equivalent to -
-REM 1120345q (Windows)
-REM 1120345q (Linux)
-REM -build_instrumented Runs static analysis, instrumentation and build phases
-REM -run_required_dynamic Runs phases required for Dynamic Analysis:
-REM If no results exist is equivalent to the command:
-REM -112a302120312panq (Windows)
-REM 112a302120312panq (Linux)
-REM If results already exist for a phase will not repeat analysis
-REM for that phase.
-REM -run_required_dyndflow Runs phases required for Dynamic Dataflow Coverage.
-REM Replaces the command -112a34021203125q e.g.
-REM contestbed testrian.c -run_required_dyndflow
-REM If results already exist for a phase will not repeat analysis
-REM for that phase
-
-start /wait c:\LDRA_Toolsuite_C_CPP_10.0.2\contbrun C:\Demo\demo-caesar\LDRA\ut_wb_encrypt_Ceasar.tcf -regress -box=white -quit
-start /wait c:\LDRA_Toolsuite_C_CPP_10.0.2\contbrun C:\LDRA_Workarea_C_CPP_10.0.2\demo-caesar_tbwrkfls\demo-caesar.ldra  -testcase_coverage_report –regressionsummary_report -controlcoupling_report -datacoupling_report

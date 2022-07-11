@@ -1,0 +1,105 @@
+@echo off
+setlocal enabledelayedexpansion
+rem +-------------------------------------------------------------+
+rem |    Author : M.W.Richardson                                  |
+rem |    Date   : 19/11/2021                                      |
+rem |                                                             |
+rem |    Copyright (C) 2021 Liverpool Data Research Associates    |
+rem +-------------------------------------------------------------+
+
+set TBED=C:\LDRA_Toolsuite_C_CPP_10.0.3
+set PRJ=devops-algorithms.exe
+set COMPILER=MinGW200 GCC C/C++ v3.2
+set PYTHON_PATH=%TBED%\Utils\Python
+set PATH=%PYTHON_PATH%;%TBED%;%PATH%
+set ROOT=%~dp0
+REM set CONFIG_DIR=%ROOT%Configuration
+set CONFIG_DIR=%ROOT%LDRA
+set START_TIME=%TIME%
+
+rem Configure relative paths 
+rem ========================
+set SRC_FILES=%ROOT%%PRJ%.tcf
+set WORK=C:\LDRA_Workarea_C_CPP_10.0.3\%PRJ%_tbwrkfls
+
+set TBI=start "ldra" /wait /min TBini.exe
+set TBS=%TBI% /Section="C/C++ %COMPILER% LDRA Testbed"
+if exist "%TBED%\contestbed.exe" (
+  set TOOL=start "ldra" /wait /min contestbed
+  set RUN=start "ldra" /wait /min contbrun
+) else (
+  set TOOL=start "ldra" /wait /min conunit
+  set RUN=start "ldra" /wait /min ldraconunit
+)
+
+
+@echo Set the compiler
+%TBI% COMPILER_SELECTED="%COMPILER%"
+%TBS% METFILE=%CONFIG_DIR%\metpen.dat
+%TBS% TBRUN_IMPORT_TBED_COMMANDS=FALSE
+
+
+@echo Delete Existing Results
+%TOOL% /delete_set=%PRJ%
+if exist %WORK% rmdir /s /q %WORK%
+
+
+@echo Run Static Analysis
+%TOOL% %SRC_FILES% /1120212 /q
+
+set TESTS=0
+REM set TCF_ROOT=%ROOT%TestCases
+set TCF_ROOT=%ROOT%UnitTests
+for %%i in (%TCF_ROOT%\*.tcf) do set /A TESTS=TESTS+1
+
+@echo Regressing !TESTS! TCFs
+set TEST=0
+for %%i in (%TCF_ROOT%\*.tcf) do (
+  set /A TEST=TEST+1
+  %RUN% %SRC_FILES% -tcf=%%i -tcf_mode=retain -regress -quit
+  set status=!errorlevel!
+  if !status! == 0 echo !TEST! : [32mPass %%i[0m
+  if !status! == 64 echo !TEST! : [31mFail %%i Invalid command line[0m
+  if !status! == 65 echo !TEST! : [31mFail %%i Input data incorrect[0m
+  if !status! == 70 echo !TEST! : [31mFail %%i Internal software limitation[0m
+  if !status! == 73 echo !TEST! : [31mFail %%i Can't create output file or directory[0m
+  if !status! == 80 echo !TEST! : [31mFail %%i Main static analysis phase incomplete[0m
+  if !status! == 81 echo !TEST! : [31mFail %%i Instrumentation failed[0m
+  if !status! == 82 echo !TEST! : [31mFail %%i Dynamic coverage failed[0m
+  if !status! == 83 echo !TEST! : [31mFail %%i Other analysis failed[0m
+  if !status! == 84 echo !TEST! : [31mFail %%i Build failed[0m
+  if !status! == 85 echo !TEST! : [31mFail %%i Execution of instrumented program failed[0m
+  if !status! == 90 echo !TEST! : [31mFail %%i Regression failure[0m
+  if !status! == 91 echo !TEST! : [31mFail %%i Build failure[0m
+  if !status! == 93 echo !TEST! : [31mFail %%i Execution timed out[0m
+  if !status! == 92 echo !TEST! : [31mFail %%i Failed to execute[0m
+  if !status! == 103 echo !TEST! : [31mFail %%i Licensing error[0m
+)
+
+@echo Generate Test Manager Report
+%TOOL% %SRC_FILES% /generate_overview_rep
+
+rem Measure Execution Time
+rem ======================
+REM set END_TIME=%TIME%
+REM set options="tokens=1-4 delims=:.,"
+REM for /f %options% %%a in ("%START_TIME%") do set start_h=%%a&set /a start_m=100%%b %% 100&set /a start_s=100%%c %% 100&set /a start_ms=100%%d %% 100
+REM for /f %options% %%a in ("%END_TIME%") do set end_h=%%a&set /a end_m=100%%b %% 100&set /a end_s=100%%c %% 100&set /a end_ms=100%%d %% 100
+
+REM set /a hours=%end_h%-%start_h%
+REM set /a mins=%end_m%-%start_m%
+REM set /a secs=%end_s%-%start_s%
+REM set /a ms=%end_ms%-%start_ms%
+
+REM if %ms% lss 0 set /a secs = %secs% - 1 & set /a ms = 100%ms%
+REM if %secs% lss 0 set /a mins = %mins% - 1 & set /a secs = 60%secs%
+REM if %mins% lss 0 set /a hours = %hours% - 1 & set /a mins = 60%mins%
+REM if %hours% lss 0 set /a hours = 24%hours%
+REM if 1%ms% lss 100 set ms=0%ms%
+REM @echo Time taken %hours%:%mins%:%secs%
+
+REM @echo Open Test Manager Report
+REM if exist "%WORK%\%PRJ%_reports\%PRJ%.ovs.htm" "%WORK%\%PRJ%_reports\%PRJ%.ovs.htm"
+REM if exist "%WORK%\%PRJ%.ovs.htm" "%WORK%\%PRJ%.ovs.htm"
+
+pause

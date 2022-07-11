@@ -1,0 +1,38 @@
+# Begin Testbed Set
+  SET_TYPE = SYSTEM
+  SET_NAME = devops-algorithms.exe_insertion-sort
+  GENERATED_BY = Create_Unit_Test_TCFs.bat
+  # Begin Source Files
+    RelativeFile = .\insertion-sort.c
+  # End Source Files
+# End Testbed Set
+
+# Begin Text
+This sequence tests the function insertionSort
+# End Text
+
+# Begin Attributes
+  Sequence Name = ut_insertion-sort_insertionSort
+  Language Code = 2
+# End Attributes
+
+# Begin Properties
+  IBox = Light Grey
+# End Properties
+
+# Begin Isolated Procedure
+  File = .\insertion-sort.c
+  Procedure = insertionSort
+# End Isolated Procedure
+
+# Begin Selected Files from Set
+  .\insertion-sort.c
+# End Selected Files from Set
+
+# Begin Excluded Files
+# End Excluded Files
+
+# Begin White Files
+  .\insertion-sort.c
+# End White Files
+

@@ -1,0 +1,38 @@
+# Begin Testbed Set
+  SET_TYPE = SYSTEM
+  SET_NAME = devops-algorithms.exe_heap-sort
+  GENERATED_BY = Create_Unit_Test_TCFs.bat
+  # Begin Source Files
+    RelativeFile = .\heap-sort.c
+  # End Source Files
+# End Testbed Set
+
+# Begin Text
+This sequence tests the function initializeHeap
+# End Text
+
+# Begin Attributes
+  Sequence Name = ut_heap-sort_initializeHeap
+  Language Code = 2
+# End Attributes
+
+# Begin Properties
+  IBox = Light Grey
+# End Properties
+
+# Begin Isolated Procedure
+  File = .\heap-sort.c
+  Procedure = initializeHeap
+# End Isolated Procedure
+
+# Begin Selected Files from Set
+  .\heap-sort.c
+# End Selected Files from Set
+
+# Begin Excluded Files
+# End Excluded Files
+
+# Begin White Files
+  .\heap-sort.c
+# End White Files
+

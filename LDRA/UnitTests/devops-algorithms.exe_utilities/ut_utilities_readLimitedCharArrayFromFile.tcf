@@ -1,0 +1,38 @@
+# Begin Testbed Set
+  SET_TYPE = SYSTEM
+  SET_NAME = devops-algorithms.exe_utilities
+  GENERATED_BY = Create_Unit_Test_TCFs.bat
+  # Begin Source Files
+    RelativeFile = .\utilities.c
+  # End Source Files
+# End Testbed Set
+
+# Begin Text
+This sequence tests the function readLimitedCharArrayFromFile
+# End Text
+
+# Begin Attributes
+  Sequence Name = ut_utilities_readLimitedCharArrayFromFile
+  Language Code = 2
+# End Attributes
+
+# Begin Properties
+  IBox = Light Grey
+# End Properties
+
+# Begin Isolated Procedure
+  File = .\utilities.c
+  Procedure = readLimitedCharArrayFromFile
+# End Isolated Procedure
+
+# Begin Selected Files from Set
+  .\utilities.c
+# End Selected Files from Set
+
+# Begin Excluded Files
+# End Excluded Files
+
+# Begin White Files
+  .\utilities.c
+# End White Files
+
