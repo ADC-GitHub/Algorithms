@@ -1,0 +1,2 @@
+check if the Pipeline triggers from Github after a commit to this Repo
+12-7-22 14:24  ADC
