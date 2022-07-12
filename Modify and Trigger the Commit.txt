@@ -2,3 +2,4 @@ check if the Pipeline triggers from Github after a commit to this Repo
 12-7-22 14:24  ADC
 12-7-22 14:26  ADC email notification to a.d.ceuninck@logic.nl
 12-7-22 14:57  ADC EMAil notification replyd by server : subject: Satrt 62 to kovairdevops@kovair.com
+12-7-22 15:03  ADC EMAil notification replyd by server : subject: Start 62 to kovairdevops@kovair.com
