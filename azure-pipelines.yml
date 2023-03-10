@@ -18,5 +18,5 @@ steps:
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: 'C:\LDRA_Workarea_C_CPP_10.1.0\demo-caesar_tbwrkfls\demo-caesar_reports\'
-    artifact: 'html'
+    artifact: 'zip'
     publishLocation: 'pipeline'
