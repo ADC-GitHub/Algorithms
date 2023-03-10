@@ -1,15 +1,22 @@
-# C/C++ with GCC
-# Build your C/C++ project with GCC using make.
-# Add steps that publish test results, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/apps/c-cpp/gcc
-
+# Starter pipeline
+# ADC - 310-3-2023
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
 trigger:
-- master
-
-pool:
-  vmImage: ubuntu-latest
-
+- main
+pool: Default
 steps:
-- script: |
-    make
-  displayName: 'make'
+- script: 
+    # C:\LDRA_Toolsuite_C_CPP_10.1.0\Contbbuildimport.exe -startin_dir=C:\Demo\Kovair\Safe_Utilities_Demo\source -build_cmd="mingw32-make.exe -f safe_utilities.mak clean all" -build -quit
+    # C:\LDRA_Toolsuite_C_CPP_10.1.0\Contestbed.exe C:\Demo\Kovair\Safe_Utilities_Demo\Source\Safe_Utilities.exe.btf -CSTANDARDS_MODEL=MISRA-C:2012/AMD3 -review -force_analysis -auto_macro
+    C:\LDRA_Toolsuite_C_CPP_10.1.0\Contestbed  C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -112a345670212q -force_analysis
+    C:\Demo\demo-caesar\caesar.exe
+    C:\LDRA_Toolsuite_C_CPP_10.1.0\Contestbed  C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -32panq
+    C:\LDRA_Toolsuite_C_CPP_10.1.0\Contestbed  C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -run_required_dyndflow
+  displayName: 'Run Caesar_V10 script'
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: 'C:\LDRA_Workarea_C_CPP_10.1.0\demo-caesar_tbwrkfls\demo-caesar_reports\'
+    artifact: 'html'
+    publishLocation: 'pipeline'
