@@ -13,7 +13,7 @@ steps:
     C:\LDRA_Toolsuite_C_CPP_10.2.1\Contestbed  C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -112a345670212q -force_analysis
   displayName: 'SCA Caesar_V10'
 - script:
-    C:\Demo\demo-caesar\caesar.exe
+   #  C:\Demo\demo-caesar\caesar.exe
   displayName: 'Execute build'
 - script:
     C:\LDRA_Toolsuite_C_CPP_10.2.1\Contestbed  C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -32panq
