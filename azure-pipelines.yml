@@ -3,29 +3,28 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
+variables:
+  name: LDRA_tool_suite
+  value: 'C:\LDRA_Toolsuite_C_CPP_10.2.1\Contestbed.exe'
 trigger:
 - main
-parameters:
-  testbed:
-   type: string
-   default: 'C:\LDRA_Toolsuite_C_CPP_10.1.0\Contestbed.exe'
-pool:
-  Default 
-- script:
+pool: Default
+steps : 
+- script: $(BUILDIMPORT) -startin_dir=C:\Demo\demo-caesar -build_cmd="mingw32-make.exe -f demo-caesar.mak clean all -build
+  displayName: buildimport of Caesar_V10
+- script: $(TESTBED) C:\Demo\demo-caesar.exe.btf -CSTANDARDS_MODEL=MISRA-C:2012/AMD3 -review -force_analysis -auto_macro
+  displayName: Static Analysis
     # C:\LDRA_Toolsuite_C_CPP_10.1.0\Contbbuildimport.exe -startin_dir=C:\Demo\Kovair\Safe_Utilities_Demo\source -build_cmd="mingw32-make.exe -f safe_utilities.mak clean all" -build -quit
     # C:\LDRA_Toolsuite_C_CPP_10.1.0\Contestbed.exe C:\Demo\Kovair\Safe_Utilities_Demo\Source\Safe_Utilities.exe.btf -CSTANDARDS_MODEL=MISRA-C:2012/AMD3 -review -force_analysis -auto_macro
     # C:\LDRA_Toolsuite_C_CPP_10.2.1\Contestbed  C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -112a345670212q -force_analysis
-    ${{ parameters.testbed }} C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -112a345670212q -force_analysis
-  displayName: 'SCA Caesar_V10'
-- script:
-   #  C:\Demo\demo-caesar\caesar.exe
-  displayName: 'Execute build'
-- script:
-    C:\LDRA_Toolsuite_C_CPP_10.2.1\Contestbed  C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -32panq
-  displayName: 'Execute Dybanic Analysis'
-- script:
-    C:\LDRA_Toolsuite_C_CPPP_10.2.1\Contestbed  C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -run_required_dyndflow
-  displayName: 'Dynamic Data flow'
+- script: $(TESTBED) C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -112a345670212q -force_analysis
+  displayName: SCA Caesar_V10
+- script: 'C:\Demo\demo-caesar\caesar.exe'
+  displayName: Run build
+- script: $(TESTBED) C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -32panq
+  displayName: Execute Dynamic Analysis
+- script: $(TESTBED) C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -run_required_dyndflow
+  displayName: Dynamic Data flow
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: 'C:\LDRA_Workarea_C_CPP_10.2.1\demo-caesar_tbwrkfls\demo-caesar_reports\'
