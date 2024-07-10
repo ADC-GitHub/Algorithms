@@ -19,11 +19,11 @@ steps :
     # C:\LDRA_Toolsuite_C_CPP_10.2.1\Contestbed  C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -112a345670212q -force_analysis
 - script: $(TESTBED) C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -112a345670212q -force_analysis -review -CSTANDARDS_MODEL=CWE-3.4
   displayName: SCA Caesar_V10
-- script: 'C:\Demo\demo-caesar\caesar.exe'
+- script: 'C:\Demo\demo-caesar\demo-caesar.exe'
   displayName: Run build
-- script: $(TESTBED) C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -32panq
+- script: $(TESTBED) C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -32panq /dataset=DynamicAnalysis
   displayName: Execute Dynamic Analysis
-- script: $(TESTBED) C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -run_required_dyndflow
+- script: $(TESTBED) C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf /run_required_dyndflow /generate_dyndflow_report /q
   displayName: Dynamic Data flow
 - task: PublishPipelineArtifact@1
   inputs:
