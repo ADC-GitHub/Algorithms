@@ -10,7 +10,7 @@ trigger:
 - main
 pool: Default
 steps : 
-- script: $(BUILDIMPORT) -startin_dir=C:\Demo\demo-caesar -build_cmd="mingw32-make.exe" -f demo-caesar.mak clean all -build -quit
+- script: $(BUILDIMPORT) -startin_dir=C:\Demo\demo-caesar -build_cmd="mingw32-make.exe -f demo-caesar.mak clean all -build -quit"
   displayName: buildimport of Caesar_V10
 #- script: $(TESTBED) C:\Demo\demo-caesar.exe.btf -CSTANDARDS_MODEL=MISRA-C:2012/AMD3 -review -force_analysis -auto_macro
 #  displayName: Static Analysis
