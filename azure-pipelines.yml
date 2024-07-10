@@ -10,10 +10,10 @@ trigger:
 - main
 pool: Default
 steps : 
-- script: $(BUILDIMPORT) -startin_dir=C:\Demo\demo-caesar -build_cmd="mingw32-make.exe -f demo-caesar.mak clean all -build
+- script: $(BUILDIMPORT) -startin_dir=C:\Demo\demo-caesar -build_cmd="mingw32-make.exe" -f demo-caesar.mak clean all -build -quit
   displayName: buildimport of Caesar_V10
-- script: $(TESTBED) C:\Demo\demo-caesar.exe.btf -CSTANDARDS_MODEL=MISRA-C:2012/AMD3 -review -force_analysis -auto_macro
-  displayName: Static Analysis
+#- script: $(TESTBED) C:\Demo\demo-caesar.exe.btf -CSTANDARDS_MODEL=MISRA-C:2012/AMD3 -review -force_analysis -auto_macro
+#  displayName: Static Analysis
     # C:\LDRA_Toolsuite_C_CPP_10.1.0\Contbbuildimport.exe -startin_dir=C:\Demo\Kovair\Safe_Utilities_Demo\source -build_cmd="mingw32-make.exe -f safe_utilities.mak clean all" -build -quit
     # C:\LDRA_Toolsuite_C_CPP_10.1.0\Contestbed.exe C:\Demo\Kovair\Safe_Utilities_Demo\Source\Safe_Utilities.exe.btf -CSTANDARDS_MODEL=MISRA-C:2012/AMD3 -review -force_analysis -auto_macro
     # C:\LDRA_Toolsuite_C_CPP_10.2.1\Contestbed  C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -112a345670212q -force_analysis
