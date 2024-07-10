@@ -23,7 +23,7 @@ steps :
   displayName: Run build
 - script: $(TESTBED) C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -32panq /dataset=DynamicAnalysis
   displayName: Execute Dynamic Analysis
-- script: $(TESTBED) C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf /run_required_dyndflow /generate_dyndflow_report /q
+- script: $(TESTBED) C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf /run_required_dyndflow /generate_dyndflow_report 
   displayName: Dynamic Data flow
 - task: PublishPipelineArtifact@1
   inputs:
