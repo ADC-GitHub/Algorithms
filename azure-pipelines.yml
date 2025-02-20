@@ -5,7 +5,7 @@
 # https://aka.ms/yaml
 variables:
   name: LDRA_tool_suite
-  value: 'C:\LDRA_Toolsuite_C_CPP_10.2.1\Contestbed.exe'
+  value: 'C:\LDRA_Toolsuite_C_CPP_10.3.0\Contestbed.exe'
 trigger:
 - main
 pool: Default
@@ -29,6 +29,6 @@ steps :
   displayName: Upload results To LDRAvault user a.d.ceuninck@logic.nl  location:( http://logicpcnbk01.ldravault.com:9885/) 
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: 'C:\LDRA_Workarea_C_CPP_10.2.1\demo-caesar_tbwrkfls\demo-caesar_reports\'
+    targetPath: 'C:\LDRA_Workarea_C_CPP_10.3.0\demo-caesar_tbwrkfls\demo-caesar_reports\'
     artifact: 'zip'
     publishLocation: 'pipeline'
