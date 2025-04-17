@@ -23,7 +23,7 @@ steps :
   displayName: Run build
 - script: $(TESTBED) C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -32panq /dataset=DynamicAnalysis
   displayName: Execute Dynamic Analysis
-- script: $(TBrun) C:\Demo\demo-caesar\LDRA\UnitTests\UT_caesar_encrypt_lin_extreme_WB.tcf -tcf_mode=retain -regress
+- script: $(TBrun) C:\Demo\demo-caesar\LDRA\UnitTests\UT_caesar_encrypt_lin_extreme_WB.tcf -tcf_mode=retain -regress -Quit
   displayName: Execute UT
 - script: $(TESTBED) C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf /run_required_dyndflow /generate_dyndflow_report 
   displayName: Dynamic Data flow 
