@@ -19,7 +19,7 @@ steps :
     # C:\LDRA_Toolsuite_C_CPP_10.2.1\Contestbed  C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -112a345670212q -force_analysis
     # $(TESTBED) C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -112a345670212q -force_analysis -review -CSTANDARDS_MODEL=CWE-3.4
 - script: $(TESTBED) C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -112a345670212q -force_analysis -review -CSTANDARDS_MODEL=MISRA C:2023
-  displayName: SCA Caesar_V10
+  displayName: SCA Caesar_V10.3.0
 - script: 'C:\Demo\demo-caesar\demo-caesar.exe'
   displayName: Run build
 - script: $(TESTBED) C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -32panq /dataset=DynamicAnalysis
