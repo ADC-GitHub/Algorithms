@@ -26,7 +26,9 @@ steps :
 - script: $(TBrun) C:\Demo\demo-caesar\LDRA\UnitTests\UT_caesar_encrypt_lin_extreme_WB.tcf -tcf_mode=retain -regress -Quit
   displayName: Execute UT
 - script: $(TESTBED) C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf /run_required_dyndflow /generate_dyndflow_report 
-  displayName: Dynamic Data flow 
+  displayName: Dynamic Data flow
+- script: $(TBreport) C:\LDRA_Workarea_C_CPP_10.2.1\demo-caesar_tbwrkfls\demo-caesar.ldra -guidelinecompliance_report -do178c_compliance_report -controlcoupling_report -securityaudit_report
+  displayName: Report  do178c compliance   
 - script: $(LDRAVAULT) C:\LDRA_Workarea_C_CPP_10.2.1\demo-caesar_tbwrkfls\demo-caesar.ldra -project="Demo_Caesar" -component="Demo_Caesar" -s=http://logicpcnbk01.ldravault.com:9885 -u=a.d.ceuninck@logic.nl -p=andre -tbreports="-all_reports" -quit
   displayName: Upload results To LDRAvault user a.d.ceuninck@logic.nl  location:( http://logicpcnbk01.ldravault.com:9885/) 
 - task: PublishPipelineArtifact@1
