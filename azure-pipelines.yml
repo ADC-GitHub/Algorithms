@@ -29,7 +29,7 @@ steps :
 - script: $(TESTBED) C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf /run_required_dyndflow /generate_dyndflow_report 
   displayName: Dynamic Data flow
 - script: $(TBreport) C:\LDRA_Workarea_C_CPP_10.3.0\demo-caesar_tbwrkfls\demo-caesar.ldra -testcase_coverage_report -testcase_coverage_overview_report -guidelinecompliance_report  –mcdc_tcplanner_report -do178c_compliance_report -controlcoupling_report -securityaudit_report
-  displayName: Vreate Varous Reports for do178c compliance   
+  displayName: Create Varous Reports for DO178c compliance   
 - script: $(LDRAVAULT) C:\LDRA_Workarea_C_CPP_10.3.0\demo-caesar_tbwrkfls\demo-caesar.ldra -project="Demo_Caesar" -component="Demo_Caesar" -s=http://logicpcnbk01.ldravault.com:9885 -u=a.d.ceuninck@logic.nl -p=andre -tbreports="-all_reports" -quit
   displayName: Upload results To LDRAvault user a.d.ceuninck@logic.nl  location:( http://logicpcnbk01.ldravault.com:9885/) 
 - task: PublishPipelineArtifact@1
