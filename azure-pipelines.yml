@@ -17,7 +17,8 @@ steps :
     # C:\LDRA_Toolsuite_C_CPP_10.1.0\Contbbuildimport.exe -startin_dir=C:\Demo\Kovair\Safe_Utilities_Demo\source -build_cmd="mingw32-make.exe -f safe_utilities.mak clean all" -build -quit
     # C:\LDRA_Toolsuite_C_CPP_10.1.0\Contestbed.exe C:\Demo\Kovair\Safe_Utilities_Demo\Source\Safe_Utilities.exe.btf -CSTANDARDS_MODEL=MISRA-C:2012/AMD3 -review -force_analysis -auto_macro
     # C:\LDRA_Toolsuite_C_CPP_10.2.1\Contestbed  C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -112a345670212q -force_analysis
-- script: $(TESTBED) C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -112a345670212q -force_analysis -review -CSTANDARDS_MODEL=CWE-3.4
+    # $(TESTBED) C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -112a345670212q -force_analysis -review -CSTANDARDS_MODEL=CWE-3.4
+- script: $(TESTBED) C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf -112a345670212q -force_analysis -review -CSTANDARDS_MODEL=MISRA C:2023
   displayName: SCA Caesar_V10
 - script: 'C:\Demo\demo-caesar\demo-caesar.exe'
   displayName: Run build
@@ -27,8 +28,8 @@ steps :
   displayName: Execute UT
 - script: $(TESTBED) C:\Demo\demo-caesar\LDRA\Caesar_V10.tcf /run_required_dyndflow /generate_dyndflow_report 
   displayName: Dynamic Data flow
-- script: $(TBreport) C:\LDRA_Workarea_C_CPP_10.3.0\demo-caesar_tbwrkfls\demo-caesar.ldra -guidelinecompliance_report -do178c_compliance_report -controlcoupling_report -securityaudit_report
-  displayName: Report  do178c compliance   
+- script: $(TBreport) C:\LDRA_Workarea_C_CPP_10.3.0\demo-caesar_tbwrkfls\demo-caesar.ldra -testcase_coverage_report -guidelinecompliance_report  –mcdc_tcplanner_report -do178c_compliance_report -controlcoupling_report -securityaudit_report
+  displayName: Vreate Varous Reports for do178c compliance   
 - script: $(LDRAVAULT) C:\LDRA_Workarea_C_CPP_10.3.0\demo-caesar_tbwrkfls\demo-caesar.ldra -project="Demo_Caesar" -component="Demo_Caesar" -s=http://logicpcnbk01.ldravault.com:9885 -u=a.d.ceuninck@logic.nl -p=andre -tbreports="-all_reports" -quit
   displayName: Upload results To LDRAvault user a.d.ceuninck@logic.nl  location:( http://logicpcnbk01.ldravault.com:9885/) 
 - task: PublishPipelineArtifact@1
